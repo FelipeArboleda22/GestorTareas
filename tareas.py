@@ -24,6 +24,16 @@ def listar_tareas():
         print(f"Estado: {tarea['estado']}")
         print("---")
 
+# Función para mostrar solo las tareas pendientes
+def listar_tareas_pendientes():
+    for tarea in tareas:
+        if tarea['estado'] == 'pendiente':
+            print(f"ID: {tareas.index(tarea)}")
+            print(f"Descripción: {tarea['descripcion']}")
+            print(f"Fecha límite: {tarea['fecha_limite'].strftime('%Y-%m-%d')}")
+            print(f"Estado: {tarea['estado']}")
+            print("---")
+
 # Función para completar una tarea
 def completar_tarea():
     id_tarea = int(input("Ingrese el ID de la tarea a completar: "))
@@ -38,10 +48,11 @@ def eliminar_tarea():
 while True:
     print("**Sistema de gestión de tareas**")
     print("1. Agregar tarea")
-    print("2. Listar tareas")
-    print("3. Completar tarea")
-    print("4. Eliminar tarea")
-    print("5. Salir")
+    print("2. Listar todas las tareas")
+    print("3. Listar tareas pendientes")
+    print("4. Completar tarea")
+    print("5. Eliminar tarea")
+    print("6. Salir")
 
     opcion = int(input("Seleccione una opción: "))
 
@@ -50,10 +61,12 @@ while True:
     elif opcion == 2:
         listar_tareas()
     elif opcion == 3:
-        completar_tarea()
+        listar_tareas_pendientes()
     elif opcion == 4:
-        eliminar_tarea()
+        completar_tarea()
     elif opcion == 5:
+        eliminar_tarea()
+    elif opcion == 6:
         break
     else:
         print("Opción no válida.")
